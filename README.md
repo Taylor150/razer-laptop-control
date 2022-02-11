@@ -14,8 +14,36 @@ Use the 2 PKGBUILDS located here:
 * [DKMS Driver](https://aur.archlinux.org/packages/razer-laptop-control-dkms-git/)
 * [CLI and Daemon](https://aur.archlinux.org/packages/razer-laptop-control-git/)
 
-### Other distros
-Unfortunatly, you have to build from scrath.
+### Debian distros
+Clone the repo
+```
+git clone https://github.com/rnd-ash/razer-laptop-control.git
+```
+Install Cargo (package  manager  for  the rust)
+```
+sudo apt install cargo
+```
+Compile the new driver
+```
+cd razer-laptop-control/driver/
+sudo make driver_dkms  
+sudo dkms add -m razercontrol -v 1.3.0  
+sudo dkms build -m razercontrol -v 1.3.0  
+sudo dkms install -m razercontrol -v 1.3.0  
+sudo update-initramfs -u
+sudo reboot
+```
+Compile the GUI
+```
+cd ..  
+cd razer_control_gui/
+./install.sh
+sudo reboot
+```
+Check to ensure the daemon is now running:
+```
+sudo systemctl status razerdaemon.service -l
+```
 
 ## What does this control
 On all razer notebooks, the following is supported:
