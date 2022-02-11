@@ -44,6 +44,8 @@ Check to ensure the daemon is now running:
 ```
 sudo systemctl status razerdaemon.service -l
 ```
+## Thanks
+Thanks to [gorghino](https://github.com/gorghino) for working this out for debian users.
 
 ## What does this control
 On all razer notebooks, the following is supported:
